@@ -5,20 +5,15 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import user.mgt.core.Savable;
+
 @Entity
 @Table(name = "EMPLOYEE")
-public class User {
-
-	@Id
-	@Column(name = "ID")
-	@GeneratedValue
-	private int id;
+public class User extends Savable{
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -33,16 +28,11 @@ public class User {
 	@Column(name = "JOINED_DATE")
 	private Date joinedDate;
 
-	@Column(name = "COMMENTS")
-	private String comments;
+	@Column(name = "USER_NAME", unique = true)
+	private String userName;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	@Column(name = "PWD")
+	private String pwd;
 
 	public String getFirstName() {
 		return firstName;
@@ -76,12 +66,20 @@ public class User {
 		this.joinedDate = joinedDate;
 	}
 
-	public String getComments() {
-		return comments;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setComments(String comments) {
-		this.comments = comments;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 }

@@ -2,18 +2,13 @@ package user.mgt.core.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="ADDRESS")
-public class Address {
+import user.mgt.core.Savable;
 
-	@Id
-	@Column(name = "ID")
-	@GeneratedValue
-	private int id;
+@Entity
+@Table(name = "ADDRESS")
+public class Address extends Savable {
 
 	@Column(name = "STREET_ADDRESS")
 	private String streetAddress;
@@ -26,14 +21,6 @@ public class Address {
 
 	@Column(name = "COUNTRY")
 	private String country;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getStreetAddress() {
 		return streetAddress;

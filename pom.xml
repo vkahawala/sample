@@ -12,6 +12,7 @@
         <module>user.mgt.core</module>
         <module>user.mgt.ui.jsf</module>
 		<module>user.mgt.ui.spring</module>
+    
   </modules>
     <build>
         <plugins>
