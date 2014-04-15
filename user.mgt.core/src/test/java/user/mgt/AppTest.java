@@ -25,18 +25,23 @@ public class AppTest extends TestCase {
 	public AppTest(String testName) {
 		super(testName);
 	}
-	
+
 	public void testUserInsertion() {
-		SessionFactory factory = new AnnotationConfiguration()
-				.addAnnotatedClass(User.class).addAnnotatedClass(Address.class)
-				.configure().buildSessionFactory();
+		try {
+			SessionFactory factory = new AnnotationConfiguration()
+					.addAnnotatedClass(User.class)
+					.addAnnotatedClass(Address.class).configure()
+					.buildSessionFactory();
 
-		User user = new User();
-		user.setFirstName("Test");
+			User user = new User();
+			user.setFirstName("Test");
 
-		Session session = factory.openSession();
-		Transaction tnx = session.beginTransaction();
-		session.save(user);
-		tnx.commit();
+			Session session = factory.openSession();
+			Transaction tnx = session.beginTransaction();
+			session.save(user);
+			tnx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

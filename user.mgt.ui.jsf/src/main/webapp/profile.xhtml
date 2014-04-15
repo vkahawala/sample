@@ -6,17 +6,12 @@
 <title>User Profile Manager - Login</title>
 </head>
 <body>
-	<header>Log in to the system</header>
+	<header>Welcome: #{login.userName}</header>
 	<nav></nav>
 	<section>
 		<h:form>
 			<div>
-				<h4>User Name</h4>
-				<h:inputText value="#{login.userName}" />
-				<h3>Password</h3>
-				<h:inputSecret value="#{login.password}" />
-				<h:commandButton action="#{login.submit}" value="login" />
-				<h:commandLink action="#{login.signup}">Sign up</h:commandLink>
+
 			</div>
 		</h:form>
 	</section>

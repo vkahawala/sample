@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<HEAD></HEAD>
+<BODY>
+	<header>Self sign-up</header>
+	<nav></nav>
+	<section>
+		<h:form>
+			<h4>User Name</h4>
+			<h:inputText value="#{signup.userName}" />
+			<h3>Password</h3>
+			<h:inputSecret id="passwordInput" value="#{signup.password}">
+				<f:validateLength minimum="5" maximum="8" />
+				<!-- f:validator validatorId="user.mgt.ui.bean.validator.NullValidator" /-->
+			</h:inputSecret>
+			<h:message for="passwordInput" style="color:red" />
+			<h:commandButton action="#{signup.submit}" value="Signup" />
+		</h:form>
+	</section>
+	<aside>aside</aside>
+	<footer>footer</footer>
+</BODY>
+</HTML>

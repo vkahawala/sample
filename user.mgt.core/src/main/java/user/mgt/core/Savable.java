@@ -2,10 +2,6 @@ package user.mgt.core;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
@@ -16,14 +12,9 @@ import user.mgt.core.util.SavableStatus;
 
 public abstract class Savable {
 
-	private static Log log = LogFactory.getLog(UserManagementService.class);
+	private static Log log = LogFactory.getLog(Savable.class);
 
 	private SavableStatus status;
-
-	@Id
-	@Column(name = "ID")
-	@GeneratedValue
-	private int id;
 
 	public SavableStatus getStatus() {
 		return status;
@@ -33,13 +24,7 @@ public abstract class Savable {
 		this.status = status;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	public abstract Serializable getIdentifier();
 
 	public Serializable save() throws Exception {
 		Session session = null;
@@ -53,7 +38,7 @@ public abstract class Savable {
 				returnVal = session.save(this);
 			} else if (status == SavableStatus.UPDATE) {
 				session.update(this);
-				returnVal = this.id;
+				returnVal = this.getIdentifier();
 			} else if (status == SavableStatus.DELETE) {
 				session.delete(this);
 			}

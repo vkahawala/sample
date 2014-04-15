@@ -12,9 +12,15 @@ public class DBUtil {
 	private static SessionFactory sfac;
 
 	static {
-		sfac = new AnnotationConfiguration().addAnnotatedClass(User.class)
-				.addAnnotatedClass(Address.class).configure()
-				.buildSessionFactory();
+		try {
+			sfac = new AnnotationConfiguration().
+					addAnnotatedClass(User.class)
+					.addAnnotatedClass(Address.class)
+					.configure()
+					.buildSessionFactory();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
