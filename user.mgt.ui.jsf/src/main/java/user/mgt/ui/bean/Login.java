@@ -3,7 +3,9 @@ package user.mgt.ui.bean;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 import org.apache.commons.logging.Log;
@@ -15,6 +17,8 @@ import user.mgt.ui.util.SecurityUtil;
 
 @ManagedBean(name = "login")
 @SessionScoped
+@RequestScoped
+@ApplicationScoped
 public class Login {
 
 	private UserManagementService userMgtService;
@@ -22,6 +26,7 @@ public class Login {
 	private static Log log = LogFactory.getLog(Login.class);
 	private String password;
 	private String userName;
+	private String fullName;
 
 	private User user;
 
@@ -36,6 +41,15 @@ public class Login {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getFullName() {
+		return user.getFirstName() != null ? (user.getFirstName() + " " + user
+				.getLastName()) : userName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getPassword() {

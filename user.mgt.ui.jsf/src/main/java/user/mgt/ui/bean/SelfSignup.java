@@ -1,5 +1,6 @@
 package user.mgt.ui.bean;
 
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -23,7 +24,8 @@ public class SelfSignup {
 	private String userName;
 	private String password;
 
-	public SelfSignup() {
+	
+	public SelfSignup() throws IOException {
 		super();
 		userMgtService = new UserManagementService();
 	}

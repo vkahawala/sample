@@ -1,26 +1,42 @@
 <!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>User Profile Manager - Login</title>
 </head>
 <body>
-	<header>Log in to the system</header>
-	<nav></nav>
-	<section>
-		<h:form>
-			<div>
-				<h4>User Name</h4>
-				<h:inputText value="#{login.userName}" />
-				<h3>Password</h3>
-				<h:inputSecret value="#{login.password}" />
-				<h:commandButton action="#{login.submit}" value="login" />
-				<h:commandLink action="#{login.signup}">Sign up</h:commandLink>
-			</div>
-		</h:form>
-	</section>
-	<aside></aside>
-	<footer></footer>
+	<ui:composition template="common.xhtml">
+
+		<header>
+			<ui:insert name="header">
+				<ui:include src="header.xhtml" />
+			</ui:insert>
+
+			Log in to the system
+
+		</header>
+		<nav></nav>
+		<section>
+			<h:form>
+				<div>
+					<h4>User Name</h4>
+					<h:inputText value="#{login.userName}" />
+					<h3>Password</h3>
+					<h:inputSecret value="#{login.password}" />
+					<h:commandButton action="#{login.submit}" value="login" />
+					<h:commandLink action="#{login.signup}">Sign up</h:commandLink>
+				</div>
+			</h:form>
+		</section>
+		<aside></aside>
+		<footer>
+			<ui:insert name="footer">
+				<ui:include src="footer.xhtml" />
+			</ui:insert>
+
+		</footer>
+	</ui:composition>
 </body>
 </html>

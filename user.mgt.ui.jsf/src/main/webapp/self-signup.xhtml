@@ -12,8 +12,7 @@
 			<h:inputText value="#{signup.userName}" />
 			<h3>Password</h3>
 			<h:inputSecret id="passwordInput" value="#{signup.password}">
-				<f:validateLength minimum="5" maximum="8" />
-				<!-- f:validator validatorId="user.mgt.ui.bean.validator.NullValidator" /-->
+				<f:validateLength minimum="1" maximum="5" />				
 			</h:inputSecret>
 			<h:message for="passwordInput" style="color:red" />
 			<h:commandButton action="#{signup.submit}" value="Signup" />
